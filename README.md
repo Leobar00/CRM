@@ -2,6 +2,10 @@
 
 # SCAFFOLDING
 
+### Backend with Node.js
+### Frontend with React js
+
+```markdown
 project/
 ├── backend/                # Backend with Node.js
 │   ├── src/                # Source code
