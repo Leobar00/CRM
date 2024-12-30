@@ -1,7 +1,7 @@
-const http = require('http');
+const https = require('http');
 const path = require('path');
 const fs = require('fs');
-const { request } = require('http');
+const { request } = require('https');
 
 // Configurazione delle porte
 const PORT = process.env.PORT || 3000; // Porta per servire il frontend e fare da proxy
@@ -53,7 +53,7 @@ const checkCors = (origin) => {
 };
 
 // Crea il server HTTP
-const server = http.createServer((req, res) => {
+const server = https.createServer(options,(req, res) => {
   const origin = req.headers.origin;
 
   // Controllo CORS
@@ -65,7 +65,7 @@ const server = http.createServer((req, res) => {
   if (req.url.startsWith('/api')) {
     // Proxy per le richieste API al backend
     const proxyReq = request(
-      `http://localhost:${BACKEND_PORT}${req.url}`,
+      `https://localhost:${BACKEND_PORT}${req.url}`,
       {
         method: req.method,
         headers: {
