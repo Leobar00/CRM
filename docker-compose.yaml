@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: . # Indica la directory principale del progetto
+      dockerfile: backend/Dockerfile
+    ports:
+      - "3000:3000" # Espone la porta 3000 al di fuori del container
+    environment:
+      - NODE_ENV=production
